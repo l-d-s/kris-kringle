@@ -58,13 +58,3 @@ pairCycle xs  = (last xs, head xs) : pairCycle' xs
      
 randomCyclePairs nameList = pairCycle <$> randomShuffle nameList
 
--- Check out algorithm described here: http://okmij.org/ftp/Haskell/perfect-shuffle.txt
-
--- Algorithm 2: Random derangement --
-
--- From Martínez, C., Panholzer, A., and Prodinger, H. (2008). Generating Random Derangements. In 2008 Proceedings of the Fifth Workshop on Analytic Algorithmics and Combinatorics (ANALCO), (Society for Industrial and Applied Mathematics), pp. 234–240.
-
--- Add option to email using smtp-mail / Network.Mail.SMTP. This would also
--- require formatting strings of the form " "First Last" <user@host.blah> ".
-
--- Allow input from the commandline (by words) or stdin using Turtle.
