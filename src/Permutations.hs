@@ -12,13 +12,13 @@ import System.Random
 
 randomShuffle :: [a] -> IO [a]
 randomShuffle l =
-    randomShuffle' l []
+    drawInto l []
     where
-        randomShuffle' [] acc = return acc
-        randomShuffle' l acc =
+        drawInto [] drawnAlready = return drawnAlready
+        drawInto l drawnAlready =
             do k <- randomRIO (0, length l - 1)
-               let (lead, x:xs) = splitAt k l in
-                   randomShuffle' (lead ++ xs) (x:acc)
+               let (before, x:after) = splitAt k l in
+                   drawInto (before ++ after) (x:drawnAlready)
 
 randomPermutation :: [a] -> IO [(a, a)]
 randomPermutation xs = (zip xs) <$> (randomShuffle xs)
