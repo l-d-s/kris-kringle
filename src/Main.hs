@@ -7,7 +7,7 @@ main :: IO ()
 main =
     do introduce
        nameList <- words <$> getLine
-       pairs <- randomCycle nameList
+       pairs <- randomDerangement nameList
        mapM_ printNamePair pairs
 
 introduce :: IO ()
@@ -23,8 +23,8 @@ noInputPrompt string =
 
 printNamePair :: (String, String) -> IO ()
 printNamePair (name1, name2) =
-    mapM_ noInputPrompt $
+    mapM_ noInputPrompt
         [ "Please fetch " ++ name1 ++ "."
         , name1 ++ ", please press any key."
-        , name1 ++ ", your Kris Kringle is " ++ name2 ++ "."
+        , name1 ++ ", your Kris Kringle is " ++ name2 ++ ". Please press any key."
         ]
